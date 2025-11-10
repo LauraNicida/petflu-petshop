@@ -8,21 +8,21 @@
           "id": "bandana-tricolor",
           "name": "Bandana Tricolor",
           "price": 29.9,
-          "img": "https://images.unsplash.com/photo-1583511655857-d19b40a7a54e?q=80&w=1080&auto=format&fit=crop",
+          "img": "assets/img/acessorios/bandana.png",
           "desc": "Bandana verde, grená e branca — tecido macio."
         },
         {
           "id": "coleira-verdadeira",
           "name": "Coleira Verdadeira",
           "price": 49.9,
-          "img": "https://images.unsplash.com/photo-1548199973-03cce0bbc87b?q=80&w=1080&auto=format&fit=crop",
+          "img": "assets/img/acessorios/coleira.png",
           "desc": "Coleira ajustável, costura reforçada e argola metálica."
         },
         {
           "id": "camisa-pet",
           "name": "Camiseta Pet (cores tricolores)",
           "price": 69.0,
-          "img": "https://images.unsplash.com/photo-1558944351-c0c0e1f67ed8?q=80&w=1080&auto=format&fit=crop",
+          "img": "assets/img/acessorios/camisa.png",
           "desc": "Tecido leve, sem escudo oficial — só as cores."
         }
       ]
@@ -35,21 +35,21 @@
           "id": "racao-dog-premium",
           "name": "Ração Seca Dog Premium 10kg",
           "price": 139.9,
-          "img": "https://images.unsplash.com/photo-1516880711640-ef7db81be3ff?q=80&w=1080&auto=format&fit=crop",
+          "img": "assets/img/comida/racao.png",
           "desc": "Para cães adultos — energia para brincar os 90 minutos."
         },
         {
           "id": "racao-cat-light",
           "name": "Ração Seca Cat Light 5kg",
           "price": 99.5,
-          "img": "https://images.unsplash.com/photo-1518791841217-8f162f1e1131?q=80&w=1080&auto=format&fit=crop",
+          "img": "assets/img/comida/racao_gato.png",
           "desc": "Para gatos castrados — controle de peso."
         },
         {
           "id": "petiscos",
           "name": "Petiscos de Treino 300g",
           "price": 29.9,
-          "img": "https://images.unsplash.com/photo-1518020382113-a7e8fc38eac9?q=80&w=1080&auto=format&fit=crop",
+          "img": "assets/img/comida/petisco.png",
           "desc": "Snack crocante perfeito para truques e gols de placa."
         }
       ]
@@ -62,21 +62,21 @@
           "id": "shampoo-hipo",
           "name": "Shampoo Hipoalergênico 500ml",
           "price": 34.9,
-          "img": "https://images.unsplash.com/photo-1623855247420-124c2c7f2c90?q=80&w=1080&auto=format&fit=crop",
+          "img": "assets/img/higiene/shampoo.png",
           "desc": "Limpeza suave e perfume discreto."
         },
         {
           "id": "tapete-premium",
           "name": "Tapete Higiênico Premium (30 un.)",
           "price": 79.0,
-          "img": "https://images.unsplash.com/photo-1583511666445-775f1f2116f5?q=80&w=1080&auto=format&fit=crop",
+          "img": "assets/img/higiene/tapete.png",
           "desc": "Superabsorvente com controle de odores."
         },
         {
           "id": "colonia-tricolor",
           "name": "Colônia Tricolor 120ml",
           "price": 39.0,
-          "img": "https://images.unsplash.com/photo-1610725666199-8e1b0c257a7b?q=80&w=1080&auto=format&fit=crop",
+          "img": "assets/img/higiene/perfume.png",
           "desc": "Fragrância leve — clima de vitória."
         }
       ]
