@@ -43,7 +43,7 @@ a:hover{text-decoration:underline}
   display:flex;align-items:center;
   background:
     linear-gradient(0deg, rgba(122,29,50,.35), rgba(15,107,77,.35)),
-    url('assets/img/banners/hero.jpg?v=3');
+    url('assets/img/banners/hero.png?v=3');
   background-size:cover;
   background-position:center;
   background-color:#f2f4f7;
