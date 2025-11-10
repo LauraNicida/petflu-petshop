@@ -37,7 +37,6 @@ a:hover{text-decoration:underline}
 .btn-outline:hover{background:var(--brand);color:#fff}
 .btn-ghost{background:transparent;color:var(--fg)}
 
-/* HERO – usa imagem local e bust de cache */
 .hero{
   position:relative;
   min-height:58vh;
