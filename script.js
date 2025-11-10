@@ -1,25 +1,34 @@
-
 const state = {
   products: [],
   services: [],
   cart: JSON.parse(localStorage.getItem('petflu-cart')||'[]'),
   bookings: JSON.parse(localStorage.getItem('petflu-bookings')||'[]')
 };
+
 const fmtBRL = v => v.toLocaleString('pt-BR', {style:'currency', currency:'BRL'});
+
+// Util para fallback de imagem
+function imgTag(src, alt){
+  const safe = src || 'assets/img/placeholder.jpg';
+  return `<img src="${safe}" alt="${alt}" loading="lazy" onerror="this.onerror=null;this.src='assets/img/placeholder.jpg'">`;
+}
 
 function saveCart(){
   localStorage.setItem('petflu-cart', JSON.stringify(state.cart));
   document.getElementById('cart-count').textContent = state.cart.reduce((a,b)=>a+b.qtd,0);
 }
+
 function addToCart(item){
   const found = state.cart.find(i=>i.id===item.id);
   if(found){ found.qtd += 1; } else { state.cart.push({...item, qtd:1}); }
   saveCart(); renderCart();
 }
+
 function removeFromCart(id){
   const i = state.cart.findIndex(x=>x.id===id);
   if(i>=0){ state.cart.splice(i,1); saveCart(); renderCart(); }
 }
+
 function renderCart(){
   const box = document.getElementById('cart-items');
   const total = state.cart.reduce((sum,i)=>sum+i.price*i.qtd,0);
@@ -40,22 +49,25 @@ function renderCart(){
 }
 
 async function loadData(){
+  // força não usar cache do Pages
   const [prodRes, servRes] = await Promise.all([
-    fetch('data/products.json'),
-    fetch('data/services.json')
+    fetch('data/products.json?v=3', {cache:'no-store'}),
+    fetch('data/services.json?v=3', {cache:'no-store'})
   ]);
   state.products = (await prodRes.json()).categories;
   state.services = await servRes.json();
 }
+
 function renderCatalog(){
   const grid = document.getElementById('catalog');
+  if (!grid) return;
   grid.innerHTML = '';
   state.products.forEach(cat=>{
     cat.items.forEach(p=>{
       const card = document.createElement('article');
       card.className='card';
       card.innerHTML = `
-        <img src="${p.img}" alt="${p.name}" loading="lazy">
+        ${imgTag(p.img, p.name)}
         <div class="card-body">
           <div class="row between">
             <h3>${p.name}</h3>
@@ -70,15 +82,49 @@ function renderCatalog(){
     });
   });
 }
+
 function renderServices(){
   const sel = document.getElementById('service');
-  sel.innerHTML = '';
-  state.services.filter(s=>['banho','tosa','banho-tosa'].includes(s.id)).forEach(s=>{
-    const opt = document.createElement('option');
-    opt.value = s.id; opt.textContent = `${s.name} — ${fmtBRL(s.base_price)}`;
-    sel.appendChild(opt);
-  });
+  const grid = document.getElementById('services-grid');
+
+  if (sel) sel.innerHTML = '';
+  if (grid) grid.innerHTML = '';
+
+  // Popular o <select> (sem tele-busca)
+  state.services
+    .filter(s => ['banho','tosa','banho-tosa'].includes(s.id))
+    .forEach(s => {
+      const opt = document.createElement('option');
+      opt.value = s.id;
+      opt.textContent = `${s.name} — ${fmtBRL(s.base_price)}`;
+      sel.appendChild(opt);
+    });
+
+  // Cards com imagem (inclui tele-busca)
+  if (grid) {
+    state.services.forEach(s => {
+      const card = document.createElement('article');
+      card.className = 'card';
+      const priceText = (s.id === 'tele-busca')
+        ? `+ ${fmtBRL(s.base_price)} (adicional)`
+        : `a partir de ${fmtBRL(s.base_price)}`;
+
+      card.innerHTML = `
+        ${imgTag(s.img, s.name)}
+        <div class="card-body">
+          <div class="row between">
+            <h3>${s.name}</h3>
+            <span class="price">${priceText}</span>
+          </div>
+          <p class="muted">${s.desc}</p>
+          <a href="#servicos" class="btn btn-outline">Agendar</a>
+        </div>
+      `;
+      grid.appendChild(card);
+    });
+  }
 }
+
 function initCartDialog(){
   const dialog = document.getElementById('cart-dialog');
   document.getElementById('open-cart').onclick = ()=>{ renderCart(); dialog.showModal(); };
@@ -89,8 +135,10 @@ function initCartDialog(){
     state.cart = []; saveCart(); renderCart();
   };
 }
+
 function initBooking(){
   const form = document.getElementById('booking-form');
+  if (!form) return;
   const pickup = document.getElementById('pickup');
   const msg = document.getElementById('booking-msg');
   form.addEventListener('submit', (e)=>{
@@ -114,6 +162,7 @@ function initBooking(){
     form.reset();
   });
 }
+
 async function main(){
   document.getElementById('cart-count').textContent = state.cart.reduce((a,b)=>a+b.qtd,0);
   await loadData();
