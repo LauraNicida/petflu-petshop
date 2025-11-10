@@ -19,11 +19,14 @@
         <a href="#servicos">Serviços</a>
         <a href="#contato">Contato</a>
       </nav>
-      <button id="open-cart" class="btn btn-ghost" aria-haspopup="dialog" aria-controls="cart-dialog">🛒 <span id="cart-count">0</span></button>
+      <button id="open-cart" class="btn btn-ghost" aria-haspopup="dialog" aria-controls="cart-dialog">
+        🛒 <span id="cart-count">0</span>
+      </button>
     </div>
   </header>
 
-  <section class="hero">
+  <!-- HERO -->
+  <section id="hero" class="hero">
     <div class="hero-overlay"></div>
     <div class="container hero-content">
       <h1>Amor tricolor em cada latido</h1>
@@ -37,6 +40,7 @@
   </section>
 
   <main>
+    <!-- PRODUTOS -->
     <section id="produtos" class="container section">
       <header class="section-head">
         <h2>Produtos tricolores</h2>
@@ -45,12 +49,17 @@
       <div id="catalog" class="cards-grid"></div>
     </section>
 
+    <!-- SERVIÇOS -->
     <section id="servicos" class="container section">
       <header class="section-head">
         <h2>Serviços</h2>
         <p class="muted">Banho e tosa — com ou sem tele-busca.</p>
       </header>
 
+      <!-- grade de cards dos serviços -->
+      <div id="services-grid" class="cards-grid"></div>
+
+      <!-- formulário de agendamento -->
       <article class="card form-card">
         <h3>Agendamento</h3>
         <form id="booking-form" aria-describedby="booking-help">
@@ -94,6 +103,7 @@
       </article>
     </section>
 
+    <!-- CONTATO -->
     <section id="contato" class="container section">
       <header class="section-head">
         <h2>Contato</h2>
@@ -111,6 +121,7 @@
     </section>
   </main>
 
+  <!-- CARRINHO -->
   <dialog id="cart-dialog" aria-labelledby="cart-title">
     <form method="dialog" class="cart">
       <h3 id="cart-title">Seu carrinho</h3>
