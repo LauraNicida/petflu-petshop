@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PetFlu Petshop — Cães tricolores</title>
+  <link rel="stylesheet" href="styles.css">
+  <meta name="description" content="Petshop temático para cães tricolores: acessórios, rações e higiene. Serviços de banho e tosa, com tele-busca opcional.">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container row">
+      <div class="brand">
+        <span class="logo">🐾</span>
+        <span class="brand-name">PetFlu Petshop</span>
+      </div>
+      <nav class="mainnav" aria-label="Navegação principal">
+        <a href="#produtos">Produtos</a>
+        <a href="#servicos">Serviços</a>
+        <a href="#contato">Contato</a>
+      </nav>
+      <button id="open-cart" class="btn btn-ghost" aria-haspopup="dialog" aria-controls="cart-dialog">🛒 <span id="cart-count">0</span></button>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <h1>Amor tricolor em cada latido</h1>
+      <p>Acessórios nas cores do clube, rações premium e cuidados de higiene. Agende banho e tosa com tele-busca.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#produtos">Ver produtos</a>
+        <a class="btn btn-outline" href="#servicos">Agendar serviço</a>
+      </div>
+      <p class="legal muted">* Projeto acadêmico sem uso de escudos oficiais — apenas paleta de cores.</p>
+    </div>
+  </section>
+
+  <main>
+    <section id="produtos" class="container section">
+      <header class="section-head">
+        <h2>Produtos tricolores</h2>
+        <p class="muted">Qualidade e estilo para o seu cão torcedor.</p>
+      </header>
+      <div id="catalog" class="cards-grid"></div>
+    </section>
+
+    <section id="servicos" class="container section">
+      <header class="section-head">
+        <h2>Serviços</h2>
+        <p class="muted">Banho e tosa — com ou sem tele-busca.</p>
+      </header>
+
+      <article class="card form-card">
+        <h3>Agendamento</h3>
+        <form id="booking-form" aria-describedby="booking-help">
+          <div class="grid-3">
+            <label>Serviço
+              <select id="service" required></select>
+            </label>
+            <label>Porte do pet
+              <select id="pet-size" required>
+                <option value="pequeno">Pequeno</option>
+                <option value="medio">Médio</option>
+                <option value="grande">Grande</option>
+              </select>
+            </label>
+            <label>Data
+              <input type="date" id="date" required />
+            </label>
+          </div>
+          <div class="grid-3">
+            <label>Horário
+              <input type="time" id="time" required />
+            </label>
+            <label>Nome do pet
+              <input type="text" id="pet-name" required placeholder="Ex.: Fred" />
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" id="pickup" /> Tele-busca
+            </label>
+          </div>
+          <label>Observações
+            <textarea id="notes" rows="3" placeholder="Alergias, instruções, etc."></textarea>
+          </label>
+          <div class="row between center">
+            <p id="booking-help" class="muted">* Demonstração: dados salvos localmente.</p>
+            <div class="row gap">
+              <output id="booking-msg" role="status" aria-live="polite"></output>
+              <button type="submit" class="btn btn-primary">Agendar</button>
+            </div>
+          </div>
+        </form>
+      </article>
+    </section>
+
+    <section id="contato" class="container section">
+      <header class="section-head">
+        <h2>Contato</h2>
+        <p class="muted">Fale com a gente e acompanhe nas redes:</p>
+      </header>
+      <div class="contact-row">
+        <p><strong>E-mail:</strong> <a href="mailto:contato@petflupetshop.com.br">contato@petflupetshop.com.br</a></p>
+        <p><strong>WhatsApp:</strong> <a href="https://wa.me/550000000000" target="_blank" rel="noopener">+55 00 90000-0000</a></p>
+        <div class="social">
+          <a href="#" aria-label="Instagram" class="icon"><img src="assets/icons/instagram.svg" alt=""></a>
+          <a href="#" aria-label="WhatsApp" class="icon"><img src="assets/icons/whatsapp.svg" alt=""></a>
+          <a href="#" aria-label="Facebook" class="icon"><img src="assets/icons/facebook.svg" alt=""></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <dialog id="cart-dialog" aria-labelledby="cart-title">
+    <form method="dialog" class="cart">
+      <h3 id="cart-title">Seu carrinho</h3>
+      <div id="cart-items"></div>
+      <div class="cart-footer">
+        <strong>Total: R$ <span id="cart-total">0,00</span></strong>
+        <menu>
+          <button value="cancel" class="btn btn-ghost">Fechar</button>
+          <button id="checkout" class="btn btn-primary">Finalizar</button>
+        </menu>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="container row between center">
+      <small>© 2025 PetFlu Petshop — Projeto acadêmico.</small>
+      <a href="#hero" class="back-to-top">Voltar ao topo ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js" defer></script>
+</body>
+</html>

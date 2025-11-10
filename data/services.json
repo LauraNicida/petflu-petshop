@@ -1,0 +1,26 @@
+[
+  {
+    "id": "banho",
+    "name": "Banho",
+    "base_price": 55.0,
+    "desc": "Banho com produtos neutros e secagem cuidadosa."
+  },
+  {
+    "id": "tosa",
+    "name": "Tosa",
+    "base_price": 85.0,
+    "desc": "Tosa higiênica ou completa — conforto em dia."
+  },
+  {
+    "id": "banho-tosa",
+    "name": "Banho + Tosa",
+    "base_price": 129.0,
+    "desc": "Combo favorito dos tricolores."
+  },
+  {
+    "id": "tele-busca",
+    "name": "Tele-busca (opcional)",
+    "base_price": 25.0,
+    "desc": "Vamos buscar e devolver seu pet com segurança."
+  }
+]
