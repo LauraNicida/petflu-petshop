@@ -49,13 +49,12 @@ function renderCart(){
 }
 
 async function loadData(){
-  // força não usar cache do Pages
   const [prodRes, servRes] = await Promise.all([
-    fetch('data/products.json?v=3', {cache:'no-store'}),
-    fetch('data/services.json?v=3', {cache:'no-store'})
+    fetch('data/products.json?v=12', {cache:'no-store'}),
+    fetch('data/services.json?v=12', {cache:'no-store'})
   ]);
   state.products = (await prodRes.json()).categories;
-  state.services = await servRes.json();
+  state.services  = await servRes.json();
 }
 
 function renderCatalog(){
